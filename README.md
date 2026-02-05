@@ -1,18 +1,19 @@
 # ClickJackCheck
 
-![Banner](https://img.shields.io/badge/Security-Tool-red.svg)
+![Banner](logo.png)
 ![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
+![Security](https://img.shields.io/badge/Security-Tool-red.svg)
 
-**ClickJackCheck** is a lightweight yet powerful Python tool designed to assess a website's vulnerability to Clickjacking attacks. It inspects HTTP headers to ensure proper protection mechanisms like `X-Frame-Options` and `Content-Security-Policy` (CSP) are in place.
+**ClickJackCheck** is a premium security assessment tool designed to audit websites for Clickjacking vulnerabilities. Built with modern coding standards and a beautiful command-line interface, it provides instant, actionable feedback on your web application's security posture.
 
 ---
 
 ## 🚀 Features
 
-- **Header Inspection**: Checks for `X-Frame-Options` and verifies if it's set to `DENY` or `SAMEORIGIN`.
-- **CSP Analysis**: Looks for the `frame-ancestors` directive in the `Content-Security-Policy` header.
-- **Vulnerability Assessment**: categorizes the protection level as Good, Weak, or None.
-- **Actionable Recommendations**: Provides specific advice on how to secure the target URL.
+- **🛡️ Comprehensive Auditing**: Checks for `X-Frame-Options` and `Content-Security-Policy`.
+- **🎨 Beautiful UI**: Powered by `Rich` for a visually stunning and readable output.
+- **⚡ Fast & Efficient**: Streamlined execution with clean, actionable results.
+- **📝 Detailed Recommendations**: Provides specific guidance on how to fix identified issues.
 
 ---
 
@@ -39,6 +40,11 @@ Run the tool by providing the target URL as an argument:
 python clickjackcheck.py <target_url>
 ```
 
+**Options:**
+
+- `-h, --help`: Show help message and exit.
+- `--timeout`: Set custom timeout (default: 10s).
+
 **Example:**
 
 ```bash
@@ -47,20 +53,12 @@ python clickjackcheck.py https://example.com
 
 ---
 
-## 📊 Output Explanation
-
-The tool provides a clear summary of the findings:
-
-- **✅ PROTECTED**: The site checks out! It has robust headers to prevent framing.
-- **❗ VULNERABLE**: The site is missing critical headers and might be susceptible to UI redressing attacks.
-- **Weak**: Some headers are present but might be misconfigured.
-
----
-
 ## 👨‍💻 Credits
 
-**Built By:** MIHx0 (Muhammad Izaz Haider)  
-**Powered by:** The PenTrix
+<p align="center">
+  <b>Built By:</b> MIHx0 (Muhammad Izaz Haider)<br>
+  <b>Powered by:</b> The PenTrix
+</p>
 
 ---
 
