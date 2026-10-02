@@ -1,40 +1,40 @@
 # ClickJackCheck
 
-![Banner](logo.png)
 ![Python](https://img.shields.io/badge/Python-3.x-blue.svg)
 ![Security](https://img.shields.io/badge/Security-Tool-red.svg)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-**ClickJackCheck** is a premium security assessment tool designed to audit websites for Clickjacking vulnerabilities. Built with modern coding standards and a beautiful command-line interface, it provides instant, actionable feedback on your web application's security posture.
-
----
-
-## 🚀 Features
-
-- **🛡️ Comprehensive Auditing**: Checks for `X-Frame-Options` and `Content-Security-Policy`.
-- **🎨 Beautiful UI**: Powered by `Rich` for a visually stunning and readable output.
-- **⚡ Fast & Efficient**: Streamlined execution with clean, actionable results.
-- **📝 Detailed Recommendations**: Provides specific guidance on how to fix identified issues.
+**ClickJackCheck** audits websites for clickjacking protection. It inspects the `X-Frame-Options` and `Content-Security-Policy` (`frame-ancestors`) headers, tells you whether the site can be embedded in a third-party frame, and gives concrete remediation steps when it cannot.
 
 ---
 
-## 🛠️ Installation
+## Features
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/MIHx0/ClickJackCheck.git
-    cd ClickJackCheck
-    ```
-
-2.  **Install dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
+- **Header auditing**: checks `X-Frame-Options` and CSP `frame-ancestors`
+- **Clear verdicts**: protected, weak or vulnerable, with the reasoning shown
+- **Batch scanning**: `-f targets.txt` scans a whole list and prints a summary table
+- **JSON output**: `--json` for piping results into other tools
+- **Sane edge cases**: obsolete `ALLOW-FROM` values are flagged as weak, not valid
+- **Rich terminal UI**: color-coded tables and panels
 
 ---
 
-## 💻 Usage
+## Installation
 
-Run the tool by providing the target URL as an argument:
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/mizazhaider-ceh/ClickJackCheck.git
+   cd ClickJackCheck
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+---
+
+## Usage
 
 ```bash
 python clickjackcheck.py <target_url>
@@ -42,21 +42,44 @@ python clickjackcheck.py <target_url>
 
 **Options:**
 
-- `-h, --help`: Show help message and exit.
-- `--timeout`: Set custom timeout (default: 10s).
+- `-f, --file PATH`: scan multiple URLs, one per line (lines starting with `#` are ignored)
+- `--timeout SECONDS`: request timeout (default: 10)
+- `--json`: print results as JSON
+- `-h, --help`: show help message and exit
 
-**Example:**
+**Examples:**
 
 ```bash
 python clickjackcheck.py https://example.com
+python clickjackcheck.py example.com --json
+python clickjackcheck.py -f targets.txt
+```
+
+**targets.txt format:**
+
+```text
+https://example.com
+https://example.org
+# lines starting with # are ignored
 ```
 
 ---
 
-## 👨‍💻 Credits
+## Tests
+
+```bash
+pip install pytest
+python -m pytest tests/ -q
+```
+
+The test suite mocks all HTTP requests, so no network access is needed.
+
+---
+
+## Credits
 
 <p align="center">
-  <b>Built By:</b> MIHx0 (Muhammad Izaz Haider)<br>
+  <b>Built By:</b> mizazhaider-ceh (Muhammad Izaz Haider)<br>
   <b>Powered by:</b> The PenTrix
 </p>
 
